@@ -1,0 +1,28 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Principal</title>
+    <!--Agregando el archivo CSS Bootstrap-->
+    <link rel="stylesheet" href="~/Content/bootstrap.css" />
+    <!--Agregando el archivo Js de Bootstrap-->
+    <script src="~/Scripts/bootstrao.js"></script>
+</head>
+<body>
+    <div class="container"> 
+        <h1>RFC</h1>
+        <label>Genera tu Registro Federal de Contribuyentes<br />Solo necesitaremos:</label><br /><br />
+        <label>*Nombre completo en mayusculas sin acentos ni dieresis.</label><br />
+        <label>*Fecha de nacimiento</label><br /><br />
+        <label>Vamos a crear tu RFC</label><br />
+        <a href="/Home/IrGenerarRfc" class="btn btn-outline-primary">INICIAR</a><br /><br />
+        <a href="/Home/IrRegistros" class="btn btn-outline-info">Mostrar</a>
+    </div>
+</body>
+</html>

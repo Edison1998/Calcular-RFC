@@ -1,0 +1,36 @@
+﻿@using System.Data
+@using Entidades
+@model  E_Rfc
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>VistaEditarRfc</title>
+    <!--Agregando el archivo CSS Bootstrap-->
+    <link rel="stylesheet" href="~/Content/bootstrap.css" />
+    <!--Agregando el archivo Js de Bootstrap-->
+    <script src="~/Scripts/bootstrao.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Editar Datos para generar RFC</h1>
+        <form action="/Home/EditarRfc" method="post">
+            <input type="hidden" name="IdRfc" value="@Model.IdRfc"/>
+            <label>Nombre(s): </label>
+            <input type="text" name="Nombre" value="@Model.Nombre" required/><br /><br />
+            <label>Apellido Paterno: </label>
+            <input type="text" name="ApePat" value="@Model.ApePat" required/><br /><br />
+            <label>Apellido Materno: </label>
+            <input type="text" name="ApeMat" value="@Model.ApeMat" /><br /><br />
+            <label>Fecha de Nacimiento</label>
+            <input type="date" name="FechaNacimiento" value="@Model.FechaNacimiento.ToString("yyyy-MM-dd")" required/>
+            <input type="submit" value="Editar" />
+        </form>
+    </div>
+</body>
+</html>

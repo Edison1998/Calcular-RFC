@@ -1,0 +1,33 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>GenerarRfc</title>
+    <!--Agregando el archivo CSS Bootstrap-->
+    <link rel="stylesheet" href="~/Content/bootstrap.css" />
+    <!--Agregando el archivo Js de Bootstrap-->
+    <script src="~/Scripts/bootstrao.js"></script>
+</head>
+<body>
+    <div class="container">
+        <form action="/Home/GenerarRfc" method="post">
+            <h1>Ingresa los siguientes datos</h1>
+            <label>Nombre(s):</label>
+            <input type="text" name="Nombre" placeholder="Escribe tu(s) nombre(s)" required/><br /><br />
+            <label>Apellido Paterno</label>
+            <input type="text" name="ApePat" placeholder="Escribe tu primer apellido" required/><br /><br />
+            <label>Apellido Maternos</label>
+            <input type="text" name="ApeMat" placeholder="Escribe tu segundo apellido" value=""/><br /><br />
+            <label>Fecha de Nacimiento</label>
+            <input type="text" name="FechaNacimiento" placeholder="Día/Mes/Año" onfocus="(this.type='date')" required/><br /><br />
+            <input type="submit" value="Generar tu RFC" />
+        </form>
+    </div>
+</body>
+</html>

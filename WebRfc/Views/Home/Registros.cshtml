@@ -1,0 +1,82 @@
+﻿@using Entidades
+@model List<E_Rfc>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Registros</title>
+    <!--Agregando el archivo CSS Bootstrap-->
+    <link rel="stylesheet" href="~/Content/bootstrap.css" />
+    <!--Agregando el archivo Js de Bootstrap-->
+    <script src="~/Scripts/bootstrao.js"></script>
+</head>
+<body>
+    <div> 
+        <div class="input-group mb-3">
+            <form action="/Home/Buscar" method="post">
+                <input type="text" name="BuscadorRfc" class="form-control" placeholder="Ingresa-letras-números"/>
+                <input type="submit" value="Buscador" class="btn btn-outline-secondary"/><br />
+                <h3>Existen @TempData["cantRegistros"] registros en la Base de Datos</h3>
+            </form>
+        </div>
+        <table class="table form-control table-striped-columns table-bordered">
+            <thead class="table-dark">
+                <tr>
+                    <th>Nombre</th>
+                    <th>Fecha de Nacimiento</th>
+                    <th>RFC</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    foreach (E_Rfc objRfc in Model)
+                    {
+                        foreach (E_Rfc objRfc2 in Model)
+                        {
+                            if ((objRfc.Rfc == objRfc2.Rfc) && (objRfc.IdRfc != objRfc2.IdRfc) && (objRfc.IdRfc > objRfc2.IdRfc))
+                            {
+
+                                <tr>
+                                    <td><font color="red">@objRfc.NombreCompleto</font></td>
+                                    <td><font color="red">@objRfc.FechaNacimiento.ToString("dd/MMM/yyyy").ToUpper()</font></td>
+                                    <td><font color="red">@objRfc.Rfc</font></td>
+                                    <td>
+                                        <a href="/Home/IrEditar?IdRfc=@objRfc.IdRfc" class="btn btn-primary">Editar</a>
+                                        <a href="/Home/Eliminar?IdRfc=@objRfc.IdRfc" class="btn btn-danger">Eliminar</a>
+                                    </td>
+                                </tr>
+                                break;
+                            }
+                            if ((objRfc.Rfc == objRfc2.Rfc) && (objRfc.IdRfc == objRfc2.IdRfc))
+                            {
+                                <tr>
+                                    <td>@objRfc.NombreCompleto</td>
+                                    <td>@objRfc.FechaNacimiento.ToString("dd/MMM/yyyy").ToUpper()</td>
+                                    <td>@objRfc.Rfc</td>
+                                    <td>
+                                        <a href="/Home/IrEditar?IdRfc=@objRfc.IdRfc" class="btn btn-primary">Editar</a>
+                                        <a href="/Home/Eliminar?IdRfc=@objRfc.IdRfc" class="btn btn-danger">Eliminar</a>
+                                    </td>
+                                </tr>
+                            }
+
+                        }
+
+
+                    }
+                }
+
+            </tbody>
+        </table>
+        <a href="/Home/IrGenerarRfc" class="btn btn-outline-primary">Generar otro RFC</a>
+        <a href="/Home/Index" class="btn btn-outline-success">INICIO</a>
+        <a href="/Home/Index" class="btn btn-outline-danger">SALIR</a>
+    </div>
+</body>
+</html>
